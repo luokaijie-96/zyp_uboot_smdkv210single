@@ -69,7 +69,8 @@
 /* skip to load BL2 */
 //#define FAST_BOOT		1
 
-#define MEMORY_BASE_ADDRESS	0x20000000
+//#define MEMORY_BASE_ADDRESS	0x20000000
+#define MEMORY_BASE_ADDRESS	0x30000000
 
 /* input clock of PLL */
 #define CONFIG_SYS_CLK_FREQ	24000000	/* the SMDK6400 has 24MHz input clock */
@@ -405,7 +406,8 @@
 
 #if defined(CONFIG_MCP_SINGLE)
 
-#define DMC0_MEMCONFIG_0	0x20E01323	// MemConfig0	256MB config, 8 banks,Mapping Method[12:15]0:linear, 1:linterleaved, 2:Mixed
+//#define DMC0_MEMCONFIG_0	0x20E01323	// MemConfig0	256MB config, 8 banks,Mapping Method[12:15]0:linear, 1:linterleaved, 2:Mixed
+#define DMC0_MEMCONFIG_0	0x30F01323	// MemConfig0	256MB config, 8 banks,Mapping Method[12:15]0:linear, 1:linterleaved, 2:Mixed
 #define DMC0_MEMCONFIG_1	0x40F01323	// MemConfig1
 #define DMC0_TIMINGA_REF	0x00000618	// TimingAref	7.8us*133MHz=1038(0x40E), 100MHz=780(0x30C), 20MHz=156(0x9C), 10MHz=78(0x4E)
 #define DMC0_TIMING_ROW		0x28233287	// TimingRow	for @200MHz
@@ -466,10 +468,12 @@
 #endif
 
 #define CONFIG_NR_DRAM_BANKS    2          /* we have 2 bank of DRAM */
-#define SDRAM_BANK_SIZE         0x20000000    /* 512 MB */
+//#define SDRAM_BANK_SIZE         0x20000000    /* 512 MB */
+#define SDRAM_BANK_SIZE         0x10000000    /* 256 MB */
 #define PHYS_SDRAM_1            MEMORY_BASE_ADDRESS /* SDRAM Bank #1 */
 #define PHYS_SDRAM_1_SIZE       SDRAM_BANK_SIZE
-#define PHYS_SDRAM_2            (MEMORY_BASE_ADDRESS + SDRAM_BANK_SIZE) /* SDRAM Bank #2 */
+//#define PHYS_SDRAM_2            (MEMORY_BASE_ADDRESS + SDRAM_BANK_SIZE) /* SDRAM Bank #2 */
+#define PHYS_SDRAM_2            0x40000000
 #define PHYS_SDRAM_2_SIZE       SDRAM_BANK_SIZE
 
 #define CFG_FLASH_BASE		0x80000000
@@ -508,7 +512,7 @@
  * SMDKC110 board specific data
  */
 
-#define CONFIG_IDENT_STRING	" for SMDKV210"
+#define CONFIG_IDENT_STRING	" for MY_ARMBOOT_V210"//" for SMDKV210"
 
 /* total memory required by uboot */
 #define CFG_UBOOT_SIZE		(2*1024*1024)
@@ -517,7 +521,8 @@
 #ifdef CONFIG_ENABLE_MMU
 #define CFG_UBOOT_BASE		0xc3e00000
 #else
-#define CFG_UBOOT_BASE		0x23e00000
+//#define CFG_UBOOT_BASE		0x23e00000
+#define CFG_UBOOT_BASE		0x33e00000
 #endif
 
 #define CFG_PHY_UBOOT_BASE	MEMORY_BASE_ADDRESS + 0x3e00000

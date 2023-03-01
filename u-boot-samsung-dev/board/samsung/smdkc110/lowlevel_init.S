@@ -115,7 +115,8 @@ lowlevel_init:
 	beq     1f			/* r0 == r1 then skip sdram init   */
 
 	/* init PMIC chip */
-	bl PMIC_InitIp
+	//bl PMIC_InitIp    //因为我们开发板没有 PMIC，因此这个函数内部向 PMIC 发送 I2C 接口
+	                    //的命令时会卡死（死循环），所以要屏蔽掉这里
 
 	/* init system clock */
 	bl system_clock_init
@@ -593,7 +594,10 @@ mmu_table:
 	.set __base,__base+1
 	.endr
 
-	.set __base,0x200
+    //下面是 c000_0000 - d000_0000 这一段虚拟地址的映射表设置，现在的设置是将这一段内存
+	//映射到 2000_0000 - 3000_0000 这一段物理地址.	
+	//.set __base,0x200
+	.set __base,0x300
 	// 256MB for SDRAM with cacheable
 	.rept 0xD00 - 0xC00
 	FL_SECTION_ENTRY __base,3,0,1,1

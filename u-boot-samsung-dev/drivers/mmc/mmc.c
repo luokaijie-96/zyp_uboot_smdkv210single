@@ -815,6 +815,7 @@ static int mmc_read_ext_csd(struct mmc *host)
 
 	ext_csd_struct = ext_csd[EXT_CSD_REV];
 	if (ext_csd_struct > 5) {
+	//if (ext_csd_struct > 8) {
 		printf("unrecognised EXT_CSD structure "
 			"version %d\n", ext_csd_struct);
 		err = -1;
@@ -1163,7 +1164,7 @@ int mmc_initialize(bd_t *bis)
 	print_mmc_devices(',');
 #endif
 
-	mmc = find_mmc_device(0);
+	mmc = find_mmc_device(1);
 	if (mmc) {
 		err = mmc_init(mmc);
 		if (err)
