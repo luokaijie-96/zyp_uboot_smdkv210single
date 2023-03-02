@@ -143,7 +143,8 @@
  * select serial console configuration
  */
 
-#define CONFIG_SERIAL3          1	/* we use UART1 on SMDKC110 */
+//#define CONFIG_SERIAL3          1	/* we use UART2 on SMDKC110 */
+#define CONFIG_SERIAL1          1	/* we use UART0 on SMDKC110 */
 
 #define CFG_HUSH_PARSER			/* use "hush" command parser	*/
 #ifdef CFG_HUSH_PARSER
@@ -213,9 +214,9 @@
 /*#define CONFIG_BOOTARGS    	"root=ramfs devfs=mount console=ttySA0,9600" */
 #define CONFIG_ETHADDR		00:40:5c:26:0a:5b
 #define CONFIG_NETMASK          255.255.255.0
-#define CONFIG_IPADDR		192.168.0.20
-#define CONFIG_SERVERIP		192.168.0.10
-#define CONFIG_GATEWAYIP	192.168.0.1
+#define CONFIG_IPADDR		192.168.1.10
+#define CONFIG_SERVERIP		192.168.1.141
+#define CONFIG_GATEWAYIP	192.168.1.1
 
 #define CONFIG_ZERO_BOOTDELAY_CHECK
 
@@ -245,7 +246,8 @@
  */
 #define CFG_LONGHELP				/* undef to save memory		*/
 
-#define CFG_PROMPT              "SMDKV210 # "   /* Monitor Command Prompt       */
+//#define CFG_PROMPT              "SMDKV210 # "   /* Monitor Command Prompt       */
+#define CFG_PROMPT              "MY_ARMBOOT_X210 # "   /* Monitor Command Prompt       */
 
 #define CFG_CBSIZE		256		/* Console I/O Buffer Size	*/
 #define CFG_PBSIZE		384		/* Print Buffer Size */
