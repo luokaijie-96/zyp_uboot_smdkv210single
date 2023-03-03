@@ -1164,6 +1164,7 @@ int mmc_initialize(bd_t *bis)
 	print_mmc_devices(',');
 #endif
 
+	//mmc = find_mmc_device(0);
 	mmc = find_mmc_device(1);
 	if (mmc) {
 		err = mmc_init(mmc);
